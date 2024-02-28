@@ -1,5 +1,6 @@
 package stringproblems;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,21 +8,9 @@ public class Palindrome {
 
     public static boolean checkPalindrome(String str){
 
-        List<Character> reversedChars = str.chars().mapToObj(ch->(char)ch).collect(Collectors.collectingAndThen(Collectors.toList(), list ->{
-            List<Character> reversedList = list.stream()
-                    .collect(Collectors.toList());
-            java.util.Collections.reverse(reversedList);
-            return reversedList;
-        }));
-
-        if(str.equals(reversedChars.stream().map(String::valueOf).collect(Collectors.joining())))
-        {
-            return true;
-        }
-        else{
-            return false;
-        }
-
+        List<Character> strChars = str.chars().mapToObj(ch->(char)ch).collect(Collectors.toList());
+        Collections.reverse(strChars);
+        return (strChars.stream().map(String::valueOf).collect(Collectors.joining()).equals(str));
 
     }
 
@@ -30,6 +19,8 @@ public class Palindrome {
 
         String str = "bcdedit";
         System.out.println(checkPalindrome(str));
+        String str1 = "aprrpa";
+        System.out.println(checkPalindrome(str1));
 
 
 
