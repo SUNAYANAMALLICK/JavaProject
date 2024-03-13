@@ -1,6 +1,38 @@
 package core;
 
+import java.util.Stack;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class StringProblems {
+
+    public static String reverseString2(String str) {
+        // Convert the string to a stream of characters,
+        // reverse it, and then collect it back to a string
+        return str.chars()
+                .mapToObj(c -> (char) c)
+                .sorted(java.util.Comparator.reverseOrder())
+                .map(Object::toString)
+                .collect(Collectors.joining());
+    }
+    public static String reverseString1(String str) {
+        // Convert the string to a stream of characters,
+        // reverse it, and then collect it back to a string
+        return str.chars()
+                .mapToObj(c -> (char) c)
+                .reduce("", (s, c) -> c + s, (s1, s2) -> s2 + s1);
+    }
+
+    public static String reverseString3(String str){
+        Stack<Character> stack = new Stack<>();
+        IntStream.range(0,str.length()).forEach(i->stack.push(str.charAt(i)));
+        StringBuilder reversed = new StringBuilder();
+        while (!stack.isEmpty()) {
+            reversed.append(stack.pop());
+        }
+
+        return reversed.toString();
+    }
 
     public static void equalCompair(){
         String str1 = "First"; // String Literal
@@ -35,6 +67,9 @@ public class StringProblems {
         // IntelliJ IDEA suggests fixing it.
 
         equalCompair();
+        System.out.println(reverseString3("reverse"));
+        System.out.println(reverseString1("string"));
+        System.out.println(reverseString2("check"));
 
 
     }

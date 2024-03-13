@@ -1,6 +1,6 @@
 package java17.patternmatching;
 
-import inheritance.shapes.*;
+import core.inheritance.shapes.*;
 
 public class PatternMatching {
 

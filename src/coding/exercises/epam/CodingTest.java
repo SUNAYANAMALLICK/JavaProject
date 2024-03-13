@@ -1,8 +1,12 @@
 package coding.exercises.epam;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class CodingTest {
 
@@ -17,32 +21,30 @@ public class CodingTest {
 //        return val.get();
 //    }
 
-    public String solution(String S) {
+    public static String solution(String S) {
         // Implement your solution here
-        List<Character> lowerCase = S.chars().filter(Character::isLowerCase).mapToObj(ch->(char)ch).collect(Collectors.toList());
-        List<Character> upperCase = S.chars().filter(Character::isUpperCase).mapToObj(ch->(char)ch).collect(Collectors.toList());
 
-        AtomicReference<String> str = new AtomicReference<>(null);
 
-        lowerCase.stream().map(Character::toUpperCase).forEach(ch->{
-             if(upperCase.contains(ch)){
-                 if(null!= str.get()){
-                     if(ch > str.get().charAt(0)){
-                         str.getAndSet(ch.toString());
-                     }
-                 }else {
-                     str.getAndSet(ch.toString());
-                 }
-             }
-
-        });
-
-       return str.get();
+        AtomicReference<Character> str = new AtomicReference<>(null);
+        IntStream.range(1, S.length())
+                .forEach(i -> {
+                    if (String.valueOf(S.charAt(i)).equalsIgnoreCase(String.valueOf(S.charAt(i - 1)))) {
+                        if (null == str.get() || str.get() < S.charAt(i)) {
+                            str.set(S.charAt(i));
+                        }
+                    }
+                });
+        return (null == str.get()) ? null : str.get().toString().toUpperCase();
 
 
     }
 
     public static void main(String[] args) {
+
+        System.out.println(solution("TeEsTt"));
+        System.out.println(solution("TeEsaA"));
+        System.out.println(solution("TeEsS"));
+
 
     }
 }

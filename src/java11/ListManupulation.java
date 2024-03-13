@@ -6,6 +6,8 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListManupulation {
 
@@ -37,9 +39,34 @@ public class ListManupulation {
             String stringWithLeadingWhitespace = "   Java 11   ";
             System.out.println("Strip: " + stringWithLeadingWhitespace.strip());
         }
+
+        public static void copyOfImplementation(){
+            List<String> list1 = new ArrayList<>();
+            list1.add("Sunayana");
+            list1.add("MAllick");
+            System.out.println(list1);
+            addToList(list1);
+            System.out.println(list1);
+            List<String> list2 = List.copyOf(list1);
+            System.out.println(list2);
+            addToList(list2);
+            System.out.println(list2);
+
+        }
+
+    private static void addToList(List<String> list1) {
+        try {
+            list1.add("Tuhin");
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
     public static void main(String[] args) throws URISyntaxException, IOException, InterruptedException {
         varExample();
         httpClientExample();
         stringMethodsExample();
+        copyOfImplementation();
     }
     }

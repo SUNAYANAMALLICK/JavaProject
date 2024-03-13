@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 public class Fibonacci {
 
     public static void main(String[] args) {
-        int n = 10;
+        int n = 5;
         Fibonacci.printFibonacci(n);
     }
 

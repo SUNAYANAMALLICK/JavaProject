@@ -12,9 +12,22 @@ import java.util.stream.IntStream;
 
 public class CodingTest {
 
+    /*
+     * Write your code below; return type and arguments should be according to the problem's requirements
+     */
+
+    // stack -> 1 to n -> 1,2,3
+    // m -> no of movies to watch -> 3
+    // movies[] -> movies -> 3,1,1
+
+    // 3 -> [2] -> [3,1,2]
+    // 1 -> [1] -> [1,3,2]
+    // 1 -> [0] -> [1,3,2]
+
+    // output -> [2,1,0]
+
     public static void findMoviesFromStack(List<Integer> allMovies, List<Integer> moviesToWatch){
 
-        List<Integer> position = new ArrayList<>();
         List<Integer> arrayList = new ArrayList<>(allMovies);
         System.out.println(arrayList.stream().toList());
         moviesToWatch.stream().forEach(movie->{
@@ -22,7 +35,6 @@ public class CodingTest {
             arrayList.remove(index);
             arrayList.addFirst(movie);
             System.out.println(arrayList.stream().toList());
-
         });
         System.out.println(arrayList.stream().toList());
 

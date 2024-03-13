@@ -6,6 +6,27 @@ import java.util.stream.IntStream;
 
 public class LuhnAlgorithm {
 
+    public static boolean isValidCreditCardNumber1(String creditCardNumber) {
+        int sum = 0;
+        boolean doubleDigit = false;
+
+        for (int i = creditCardNumber.length() - 1; i >= 0; i--) {
+            int digit = Character.getNumericValue(creditCardNumber.charAt(i));
+
+            if (doubleDigit) {
+                digit *= 2;
+                if (digit > 9) {
+                    digit -= 9;
+                }
+            }
+
+            sum += digit;
+            doubleDigit = !doubleDigit;
+        }
+
+        return sum % 10 == 0;
+    }
+
     public static boolean isValidCreditCardNumber(String creditCardNumber) {
         AtomicInteger sum = new AtomicInteger();
         Predicate<Integer> checkEven = (integer) -> integer % 2 == 0;
@@ -34,6 +55,18 @@ public class LuhnAlgorithm {
         }
 
         if (isValidCreditCardNumber(creditCardNumber2)) {
+            System.out.println("The credit card number is valid.");
+        } else {
+            System.out.println("The credit card number is invalid.");
+        }
+
+        if (isValidCreditCardNumber1(creditCardNumber)) {
+            System.out.println("The credit card number is valid.");
+        } else {
+            System.out.println("The credit card number is invalid.");
+        }
+
+        if (isValidCreditCardNumber1(creditCardNumber2)) {
             System.out.println("The credit card number is valid.");
         } else {
             System.out.println("The credit card number is invalid.");
