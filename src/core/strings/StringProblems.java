@@ -1,10 +1,11 @@
-package core;
+package core.strings;
 
-import java.util.Stack;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class StringProblems {
+
 
     public static String reverseString2(String str) {
         // Convert the string to a stream of characters,

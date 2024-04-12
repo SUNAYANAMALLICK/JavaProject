@@ -1,4 +1,4 @@
-package core;
+package core.threads;
 
 public class ThreadProblems {
 
