@@ -10,6 +10,10 @@ public interface Calculator {
         return x * x;
     }
 
+    default int cube(int x) { // default method
+        return x * x *x ;
+    }
+
     static void staticMethod(){ // static method
         System.out.println("Static method in functional interface.");
     }
