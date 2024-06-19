@@ -1,6 +1,8 @@
-package core.inheritance.shapes;
+package core.polymorphism;
 
-public class Square extends Shape{
+import core.polymorphism.Shape;
+
+public class Square extends Shape {
     private int a;
 
     public int getA() {

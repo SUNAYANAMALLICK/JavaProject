@@ -1,4 +1,6 @@
-package core.inheritance.shapes;
+package core.polymorphism;
+
+import core.polymorphism.Shape;
 
 public class Triangle extends Shape {
 

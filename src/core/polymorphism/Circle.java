@@ -1,6 +1,8 @@
-package core.inheritance.shapes;
+package core.polymorphism;
 
-public class Circle extends Shape{
+import core.polymorphism.Shape;
+
+public class Circle extends Shape {
     private double radius;
 
     public double getRadius() {
@@ -12,8 +14,18 @@ public class Circle extends Shape{
     }
 
     @Override
+    void draw() {
+        System.out.println("Drawing circle");
+    }
+
+    @Override
+    public int getNumberOfSides() {
+        return 0;
+    }
+
+    @Override
     public double calculateArea() {
-        return 3.14 * getRadius() * getRadius();
+        return 3.14 * getRadius()*getRadius();
     }
 
     @Override
@@ -21,8 +33,4 @@ public class Circle extends Shape{
         return 2 * 3.14 * getRadius();
     }
 
-    @Override
-    public int getNumberOfSides() {
-        return super.getNumberOfSides();
-    }
 }

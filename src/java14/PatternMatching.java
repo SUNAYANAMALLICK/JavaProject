@@ -1,6 +1,6 @@
 package java14;
 
-import core.inheritance.shapes.*;
+import core.polymorphism.*;
 
 public class PatternMatching {
 
