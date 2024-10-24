@@ -1,14 +1,7 @@
 package coding.exercises.homeoffice;
 
-import coding.exercises.infy.Circle;
-import coding.exercises.infy.Rectangle;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Stack;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class CodingTest {
 

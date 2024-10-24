@@ -1,35 +1,58 @@
 package coding.exercises.ey;
 
 
+import core.inheritance.employee.Employee;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class EmployeeSorting {
     // Employee record with name, id, and departmentId fields
-    public record Employee(String name, int id, int departmentId) {}
+   // public record Employee(String name, int id, int departmentId) {}
 
     public static void main(String[] args) {
         // Sample list of employees
         List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee("Alice", 1, 10));
-        employees.add(new Employee("Bob", 2, 20));
-        employees.add(new Employee("Charlie", 3, 10));
-        employees.add(new Employee("Dave", 4, 30));
+        employees.add(new Employee("Alice", 1L, 10000));
+        employees.add(new Employee("Bob", 2L, 20000));
+        employees.add(new Employee("Charlie", 3L, 10000));
+        employees.add(new Employee("Dave", 4L, 30000));
 
-        employees.stream().forEach(System.out::println);
+      //  employees.stream().forEach(System.out::println);
+
+        for (Employee employee : employees) {
+            System.out.println("Name: " + employee.getName() +
+                    ", ID: " + employee.getEmployeeid() +
+                    ", Department ID: " + employee.getEmployeeid());
+        }
 
 
+        // Comparator to sort by name
+        Comparator<Employee> sortByName = Comparator.comparing(Employee::getName);
+
+        // Comparator to sort by id
+        Comparator<Employee> sortById = Comparator.comparingLong(Employee::getEmployeeid);
+
+        // Comparator to sort by salary
+        Comparator<Employee> sortBySalary = Comparator.comparingDouble(Employee::getSalary);
+
+
+        //employees.sort(Comparator.c
         // Sorting employees by departmentId using Comparator
-        employees.sort(Comparator.comparingInt(Employee::departmentId));
+        //employees.sort(Comparator.comparingDouble(Employee::getSalary));
 
-        employees.stream().forEach(System.out::println);
+        Collections.sort(employees,sortBySalary);
+
+
+      //  employees.stream().forEach(System.out::println);
 
         // Output the sorted list of employees
         for (Employee employee : employees) {
-            System.out.println("Name: " + employee.name() +
-                    ", ID: " + employee.id() +
-                    ", Department ID: " + employee.departmentId());
+            System.out.println("Name: " + employee.getName() +
+                    ", ID: " + employee.getEmployeeid() +
+                    ", Department ID: " + employee.getEmployeeid());
         }
     }
 }

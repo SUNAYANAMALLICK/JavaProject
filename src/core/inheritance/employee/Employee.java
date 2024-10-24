@@ -5,6 +5,15 @@ public class Employee {
     private Long employeeid;
     private double salary;
 
+    public Employee() {
+    }
+
+    public Employee(String name, Long employeeid, double salary) {
+        this.name = name;
+        this.employeeid = employeeid;
+        this.salary = salary;
+    }
+
     public double calculateBonus(){
         return getSalary() * 11/10;
     }

@@ -1,4 +1,4 @@
-package coding.exercises.infy;
+package coding.exercises.infosys.uk;
 
 public class CodingTest {
     public static void main(String[] args) {
