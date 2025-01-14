@@ -2,6 +2,7 @@ package coding.exercises.cognizant;
 
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -27,13 +28,19 @@ public class CodingTest140324 {
     }
     public static void main(String[] args) {
 
-       List<String> list = new ArrayList<>();
-       list.add("horse");
-       list.add("sheep");
-       list.add("cat");
-       list.add("elephant");
+           List<String> list = new ArrayList<>();
+           list.add("horse");
+           list.add("sheep");
+           list.add("cat");
+           list.add("elephant");
 
-       System.out.println(list);
+           System.out.println(list);
+
+        List<String> sortedList = list.stream()
+                .sorted(Comparator.comparing(String::length).reversed())
+                .collect(Collectors.toList());
+
+        System.out.println(sortedList);
 
 
      getList(list).stream().forEach(System.out::println);
