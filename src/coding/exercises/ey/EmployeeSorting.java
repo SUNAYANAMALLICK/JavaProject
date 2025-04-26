@@ -70,7 +70,7 @@ import core.inheritance.employee.Employee;
 
 import java.util.Comparator;
 
-public class CodingTest extends Comparator<Employee>{
+public class CodingTest24042025 extends Comparator<Employee>{
     public static void main(String[] args) {
 
 
