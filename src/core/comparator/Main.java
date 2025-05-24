@@ -5,10 +5,16 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class EmployeeMain {
+public class Main {
 
     record Employee(int id, String name, Double salary)  implements Serializable {
 
+    }
+    record Student(int id, String name, Integer marks) implements Serializable, Comparable<Student> {
+        @Override
+        public int compareTo(Student o) {
+            return Integer.compare(this.marks, o.marks);
+        }
     }
     public static void main(String[] args) {
 
@@ -39,6 +45,24 @@ public class EmployeeMain {
                 .findFirst().orElse(0d);
 
         System.out.println( n + "th highest salary: " + nthHighestSalary);
+
+        List<Student> students = List.of(
+                new Student(1,"Spriha", 110),
+                new Student(2,"Sunayana", 100),
+                new Student(3,"Tuhin", 90),
+                new Student(4,"Riya", 120)
+        );
+
+        System.out.println(students);
+
+        List<Student> sorted = students.stream()
+                .sorted() // uses compareTo()
+                .collect(Collectors.toList());
+
+        System.out.println("Sorted by marks:");
+        System.out.println(sorted);
+
+
 
     }
 }
